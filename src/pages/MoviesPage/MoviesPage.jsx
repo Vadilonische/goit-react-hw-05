@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { fetchSearchMovie } from "../../api/api";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import css from "./MoviesPage.module.css";
 
 const notify = (txt) =>
   toast.error(`${txt}`, {
@@ -68,7 +69,7 @@ export default function MoviesPage() {
       <div>
         <SearchBar onSubmit={handleSubmit} />
         {error && <p>We did not find it. Try changing the request.</p>}
-        <ul>
+        <ul className={css.moviesPageList}>
           {moviesList.map((movie) => {
             return (
               <li key={movie.id}>

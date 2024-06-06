@@ -1,6 +1,8 @@
+import css from "./SearchBar.module.css";
+
 export default function SearchBar({ onSubmit }) {
   return (
-    <form onSubmit={onSubmit}>
+    <form className={css.searchBarForm} onSubmit={onSubmit}>
       <input
         type="text"
         name="movieName"
@@ -8,8 +10,11 @@ export default function SearchBar({ onSubmit }) {
         autoComplete="off"
         autoFocus
         required
+        className={css.searchBarInput}
       />
-      <button type="submit">Search</button>
+      <button className={css.btn} type="submit">
+        Search
+      </button>
     </form>
   );
 }

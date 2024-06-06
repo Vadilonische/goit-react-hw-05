@@ -2,6 +2,7 @@ import { fetchMovieCast } from "../../api/api";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import css from "./MovieCast.module.css";
 
 const notify = () =>
   toast.error("Hmm... Please reload page.", {
@@ -36,7 +37,7 @@ export default function MovieCast() {
   }, [movieId]);
 
   return (
-    <ul>
+    <ul className={css.movieCastList}>
       {castList.length > 0 ? (
         castList.map(({ id, name, profile_path, character }) => (
           <li key={id}>

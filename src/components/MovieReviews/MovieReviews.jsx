@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchMovieReviews } from "../../api/api";
+import css from "./MovieReviews.module.css";
 
 const notify = () =>
   toast.error("Hmm... Please reload page.", {
@@ -33,7 +34,7 @@ export default function MovieReviews() {
 
   return (
     <main>
-      <ul>
+      <ul className={css.movieReviewsList}>
         {reviewsList.length > 0 ? (
           reviewsList.map(({ author, content, id }) => (
             <li key={id}>

@@ -3,6 +3,7 @@ import { Link, useLocation, useParams, Outlet } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import { fetchMovieDetails } from "../../api/api";
 import toast from "react-hot-toast";
+import css from "./MovieDetailsPage.module.css";
 
 const notify = () =>
   toast.error("Hmm... Please reload page.", {
@@ -43,30 +44,34 @@ export default function MovieDetailsPage() {
 
   return (
     <main>
-      <div>
+      <div className={css.detailsContainer}>
         <Link to={location.state?.from ?? "/"}>Go back</Link>
-        <img
-          src={
-            poster_path
-              ? `https://image.tmdb.org/t/p/w300${poster_path}`
-              : defaultImg
-          }
-          loading="lazy"
-          width={250}
-          alt="Movie poster"
-        />
-        <div>
-          <h2>{original_title}</h2>
-          <p>User score: {scoreToFixed}</p>
-          <h2>Overview</h2>
-          <p>{overview}</p>
-          <h2>Genres</h2>
-          <ul>
-            {genres &&
-              genres.length > 0 &&
-              genres.map(({ id, name }) => <li key={id}>{name}</li>)}
-          </ul>
+        <div className={css.movieInfo}>
+          <img
+            src={
+              poster_path
+                ? `https://image.tmdb.org/t/p/w300${poster_path}`
+                : defaultImg
+            }
+            loading="lazy"
+            width={250}
+            height={400}
+            alt="Movie poster"
+          />
+          <div className={css.infoBlock}>
+            <h2>{original_title}</h2>
+            <p>User score: {scoreToFixed}</p>
+            <h2>Overview</h2>
+            <p>{overview}</p>
+            <h2>Genres</h2>
+            <ul className={css.genresList}>
+              {genres &&
+                genres.length > 0 &&
+                genres.map(({ id, name }) => <li key={id}>{name}</li>)}
+            </ul>
+          </div>
         </div>
+
         <div>
           <h3>Additional information</h3>
           <ul>

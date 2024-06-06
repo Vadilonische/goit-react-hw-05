@@ -3,6 +3,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import { fetchTrendMovies } from "../../api/api";
 import Loader from "../../components/Loader/Loader";
 import toast from "react-hot-toast";
+import css from "./HomePage.module.css";
 
 const notify = () =>
   toast.error("Hmm... Please reload page.", {
